@@ -1,0 +1,30 @@
+{% extends 'navbar-footer.html' %}
+{% load static %}
+<title>{% block title%} sign in {% endblock  %}</title>
+{% block content %}
+    <form action="{%url 'sign_in'%}" method="POST">
+        {% csrf_token %}
+            <div class="container">
+                   
+                <div class="form-floating">
+                    <label for="username">Username</label>
+                    <!-- <input type="text" class="form-control" id="username" placeholder="name@example.com" name = "username"> -->
+                    {{form.username}}
+                </div>
+                <div class="row gx-5">
+                    <div class="col-md-12">
+                        <div class="form-floating">
+                            <label for="password">Password</label>
+                            <!-- <input type="password" class="form-control" id="password" placeholder="Password" name = "password"> -->
+                            {{form.password}}
+                        </div>
+                    </div>
+                </div>
+                <div id="btn" class="button">
+                    <button type="summit" class="btn btn-secondary">Sign in</button>
+                </div>
+                <div style = "margin: 0 33%;"><a href = "{% url 'sign_up' %}">sign up</a> or <a href = "{% url 'reset_password' %}">fotgotton password</a></div>
+            </div>
+    </form>
+{% endblock  %}
+    

@@ -1,0 +1,66 @@
+{% extends 'navbar-footer.html' %}
+{% load static %}
+<title>{% block title%} sign up {% endblock  %}</title>
+{% block content %}
+    <form action="{% url 'sign_up' %}" method="POST">
+        {% csrf_token %}
+
+            <div class="container">
+
+                <div class="form-floating">
+                    <label for="email">Email address</label>
+                    <!-- <input type="email" class="form-control" id="email" placeholder="name@example.com" name = "email"> -->
+                    {{form.email}}
+                </div>
+                
+                <div class="form-floating">
+                    <label for="username">Username</label>
+                    <!-- <input type="text" class="form-control" id="username" placeholder="name@example.com" name = "username"> -->
+                    {{form.username}}
+                </div>
+
+
+                <div class="row gx-5">
+                    <div class="col-md-6"> 
+                        <div class="form-floating">
+                            <label for="first_name">First name</label>
+                            <!-- <input name = "first_name" type="text" class="form-control" id="first_name" placeholder="first_name"> -->
+                            {{form.first_name}}
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6"> 
+                        <div class="form-floating">
+                            <label for="last_name">Last name</label>
+                            <!-- <input name = "last_name" type="text" class="form-control" id="last_name" placeholder="last_name"> -->
+                            {{form.last_name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gx-5">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <label for="password1">Password</label>
+                            <!-- <input type="password" class="form-control" id="password1" placeholder="Password" name = "password1"> -->
+                            {{form.password1}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <label for="password2">Enter the password again</label>
+                            <!-- <input type="password" class="form-control" id="password2" placeholder="Enter the password again" name = "password2"> -->
+                            {{form.password1}}
+                        </div>
+                    </div>
+                </div>
+
+                <div id="btn" class="button">
+                    <button type="summit" class="btn btn-secondary">Sign up</button>
+                </div>
+            </div>
+            
+    </form>
+{% endblock  %}
+    
