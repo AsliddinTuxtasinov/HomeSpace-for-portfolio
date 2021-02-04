@@ -107,9 +107,10 @@
                                 <!-- login / logout -->
                                 {% if user.is_authenticated %}
                                     <li class="has-children {% if logout == request.path %}active{% endif %}">
-                                        <a href="{{user.username}}">firs_name last_name</a>
+                                        <a href="../{{user.username}}">{{user.first_name}} {{user.last_name}}</a>
                                         <ul class="dropdown">
                                             <li><a href="{% url 'logout' %}">log out</a></li>
+                                            <li><a href='{{user.username}}/add_reklama'>add reklama</a></li>
                                             <li><a href="#">edit profile</a></li> <!-- buni togirlash kerak -->
                                             <li><a href="{% url 'reset_password' %}">forgotton password</a></li>
                                         </ul>
@@ -133,7 +134,8 @@
     
     {% endblock %}
     <!-- footer begin -->
-    
+
+{% if "/" == request.path %}    
     <div class="site-section">
         <div class="container">
             <div class="row mb-5 justify-content-center">
@@ -310,6 +312,8 @@
             </div>
         </div>
     </div>
+
+{% endif %}
     
     
     <footer class="site-footer">
@@ -369,7 +373,7 @@
                 <div class="col-md-12">
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;</script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Asliddin Tuxtasinov</a>
+                        Copyright &copy;</script><script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >colorib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>

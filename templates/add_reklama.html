@@ -1,0 +1,146 @@
+{% extends 'navbar-footer.html' %}
+{% load static %}
+{% block title %}add reklama{% endblock title %}
+
+{% block content %}
+<div class="container">
+
+        <form method="POST">
+
+            <!-- -------------------------------- -->
+
+            <label for="title_id">Title</label>
+            <input type="text" name="title" id="title_id"><br>
+
+            <!-- -------------------------------- -->
+
+            <label for="more_info_id">More info</label>
+            <textarea name="more_info" id="more_info_id" cols="30" rows="10"></textarea><br>
+
+            <!-- -------------------------------- -->
+
+
+            <label for="region_id">Region</label>
+            <select name="region" id="region_id" class="region">
+                <option disabled selected>Select the region</option>
+                {% for region in regions %}
+                <option value="">{{region.name}}</option>
+                {% endfor %}
+            </select><br>
+            <input type="text" name="region_id" id="viloyat_id">
+
+            <!-- -------------------------------- -->
+
+            <label for="district_id">District</label>
+            <select name="district" id="district_id">
+                <option disabled selected>Select the district</option>
+            </select><br>
+            <input type="text" name="district_id" id="tuman_id">
+
+            <!-- -------------------------------- -->
+
+            <label for="adress">Adress</label>
+            <input type="text" name="adress" id="address_id"><br>
+
+            <!-- -------------------------------- -->
+
+            <label for="sale_rent_id">Sale/Rent</label>
+            <select name="sale_rent" id="sale_rent_id">
+                <option disabled selected>Select sale/rent</option>
+                {% for sale_rent in sale_rents %}
+                <option>{{sale_rent.name}}</option>
+                {% endfor %}
+            </select><br>
+            <input type="text" name="sale_rent_id" id="sotish_ijara">            
+
+            <!-- -------------------------------- -->
+
+            <label for="comfort_id">comfort</label>
+            <textarea name="comfort" id="comfort_id" cols="30" rows="10"></textarea><br>
+
+            <!-- -------------------------------- -->
+
+            <label for="home_type_id">home_type</label>
+            <input type="text" name="home_type" id="home_type_id">
+
+            <!-- -------------------------------- -->
+
+            <label for="price_id">price</label>
+            <input type="number" name="prise" id="price_id"><br>
+
+            <!-- -------------------------------- -->
+
+            <label for="img">Image</label>
+            <input type="file" name="image" id="img"><br>
+
+            <!-- -------------------------------- -->
+
+            <label for="phone_id">Phone number</label>
+            <input type="text" name="phone" id="phone_id"><br>
+
+            <!-- -------------------------------- -->
+
+            <!--<label for="author">author(username)</label>
+            <input type="text" name="author" id="author"><br>-->
+
+            <!-- -------------------------------- -->
+
+            <br><button type="submit">upload</button>
+
+        </form>
+
+</div>
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        var tuman_ids = []; //selectedRegionIndex = 0;
+        var t = '{{ districts|safe }}';
+        var tumanlar = JSON.parse(t);
+
+        $("select.region").change(function(){
+
+            tuman_ids = [];
+            selectRegionIndex = $(".region option:selected").index();
+            if (selectedRegionIndex > 1) selectedRegionIndex ++ ;
+            var = tuman = [];
+
+            for ( var i=0; i<tumanlar.lenth; i++){
+
+                if (selectedRegionIndex == tumanlar[i].fileds.region_id){
+
+                    tuman_ids.push(tumanlar[i].pk);
+                    tuman.push(tumanlar[i].fileds.name);
+
+                };
+            };
+
+            var tuman_options = "";
+            for (var i=0; i<tuman.length;i++){
+                tuman_options+="<option>"+tuman[i]+"</option>";
+            }
+
+            $("#district_id").html(tuman_options);
+            $("#viloyat_id").val(selectedRegionIndex);
+            selectedDistrictIndex=$("#district_id option:selected").index();
+            console.log(selectedDistrictIndex);
+            $("#tuman_id").val(tuman_ids[selectedDistrictIndex]);
+
+        });
+
+        $("#sale_rent_id").change(function(){
+
+            selectedSaleRentIndex=("#sale_rent_id option:selected").index();
+            $("#sotish_ijara").val(selectedSaleRentIndex);
+
+        });
+
+    });
+
+</script>
+
+
+{% endblock %}

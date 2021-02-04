@@ -4,6 +4,9 @@ from django.shortcuts import render
 def home(request):
     return render( request, 'index.html')
 
+#def add_reklama(request):
+#    return render(request, 'add_reklama.html')
+
 def nav_bar(request):
     return render( request, 'navbar-footer.html')
 

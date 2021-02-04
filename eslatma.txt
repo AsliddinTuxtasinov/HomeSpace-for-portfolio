@@ -1,0 +1,3 @@
+1 admin paneldan reklama berib bolmayapti
+2 main.models da kamchilik lar bor
+3 personal_area . views da kamchiliklar bor
